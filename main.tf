@@ -19,7 +19,7 @@ resource "aws_security_group" "internal" {
   }
 
   tags {
-	Name = "sg-default"
+	Name = "sg-internal"
   }
 }
 
@@ -38,31 +38,6 @@ resource "aws_security_group" "ovpn" {
 
   tags {
 	Name = "sg-ovpn"
-  }
-}
-
-/* Default security group */
-resource "aws_security_group" "default" {
-  name = "security-group-default"
-  description = "Default security group that allows inbound and outbound traffic from all instances in the VPC"
-  vpc_id = "${var.vpc_id}"
-
-  ingress {
-	from_port   = "0"
-	to_port     = "0"
-	protocol    = "-1"
-	self        = true
-  }
-
-  egress {
-	from_port   = "0"
-	to_port     = "0"
-	protocol    = "-1"
-	self        = true
-  }
-
-  tags {
-	Name = "sg-default"
   }
 }
 
