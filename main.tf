@@ -23,6 +23,28 @@ resource "aws_security_group" "internal" {
   }
 }
 
+/* Default security group */
+resource "aws_security_group" "icmp" {
+  name = "security-group-icmp"
+  description = "Default security group that allows inbound and outbound traffic from all instances in the VPC"
+  vpc_id = "${var.vpc_id}"
+
+  ingress {
+	from_port   = "0"
+	to_port     = "0"
+	protocol    = "icmp"
+  }
+
+  egress {
+	from_port   = "0"
+	to_port     = "0"
+	protocol    = "icmp"
+  }
+
+  tags {
+	Name = "sg-icmp"
+  }
+}
 /* Security group */
 resource "aws_security_group" "ovpn" {
   name = "security-group-ovpn"
