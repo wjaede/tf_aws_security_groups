@@ -1,4 +1,3 @@
-
 #output "sg_ssh_id" {
 #  value = "${aws_security_group.ssh.id}"
 #}
@@ -19,8 +18,8 @@
 #  value = "${aws_security_group.internal.id}"
 #}
 
-output "internal_id" {
-  value = "${aws_security_group.internal.id}"
+output "private_id" {
+  value = "${aws_security_group.private.id}"
 }
 
 output "public_id" {
